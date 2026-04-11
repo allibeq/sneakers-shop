@@ -9,21 +9,22 @@
         <span>{{price}} USD</span>
       </div>
       <img @click="onClickAdd" :src="!isAdded ? 'plus.svg' : 'checked.svg'" alt="Add">
-      <img @click="onClickLike" :src="!isFavorite ? 'like-1.svg' : 'like-2.svg'" alt="Like">
+      <img @click="addToFavorite" :src="!isFavourite ? 'like-1.svg' : 'like-2.svg'" alt="Like">
     </div>
   </div>
 </template>
 
 <script setup>
 defineProps({
+  id: Number,
   title: String,
   imgUrl: String,
   price: Number,
-  isFavorite: Boolean,
+  isFavourite: Boolean,
   isAdded: Boolean,
   onClickAdd: Function,
-  onClickLike: Function,
-})
+  addToFavorite: Function,
+});
 </script>
 
 <!--<style scoped>-->

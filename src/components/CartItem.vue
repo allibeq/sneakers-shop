@@ -1,16 +1,25 @@
 <script setup>
+defineProps({
+  id: Number,
+  imageUrl: String,
+  price: Number,
+  title: String,
+})
+
+const emit = defineEmits(['deleteFromCart'])
 </script>
+
 <template>
   <div class="border border-slate-200 p-4 rounded-xl flex flex-row gap-4 items-center">
 
-    <img src="/sneakers/sneakers-1.jpg" alt="Sneakers" class="w-16 h-16">
+    <img :src="imageUrl" alt="Sneakers" class="w-16 h-16">
 
     <div class="flex flex-row gap-2 items-center justify-between">
       <div>
-        <p>sneakers sneakers sneakers sneakers sneakers sneakers sneakers sneakers</p>
-        <b>1200</b>
+        <p>{{title}}</p>
+        <b>{{price}}</b>
       </div>
-      <img src="/close.svg" alt="Delete" class="w-7 h-7 cursor-pointer" />
+      <img @click="emit('deleteFromCart')" src="/close.svg" alt="Delete" class="w-7 h-7 cursor-pointer" />
     </div>
 
   </div>
