@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-4 gap-3">
+  <div class="grid grid-cols-4 gap-3" v-auto-animate>
     <Card
         v-for="item in items"
         :id="item.id"
