@@ -6,7 +6,7 @@
       <b>{{ totalPrice }} USD</b>
     </div>
     <button
-        @click="createOrder"
+        @click="() => emit('createOrder')"
         :disabled="isCreatingOrder"
         class="bg-lime-500 w-full rounded-xl py-3 text-white font-bold hover:bg-lime-600 transition cursor-pointer disabled:bg-slate-400">
       Finish order
@@ -15,8 +15,16 @@
 </template>
 
 <script setup>
-import {inject} from "vue";
+import {useCartStore} from "../stores/cart.store.js";
+import {storeToRefs} from "pinia";
 
-const {totalPrice, isCreatingOrder, createOrder} = inject("cart");
+const cartStore = useCartStore();
+const { totalPrice } = storeToRefs(cartStore);
+
+defineProps({
+  isCreatingOrder: Boolean,
+})
+
+const emit = defineEmits(["createOrder"]);
 </script>
 

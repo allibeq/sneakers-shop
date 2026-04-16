@@ -1,8 +1,11 @@
 <script setup>
 import CartItem from "./CartItem.vue";
-import {inject} from "vue";
+import {storeToRefs} from "pinia";
+import {useCartStore} from "../stores/cart.store.js";
 
-const { cartItems, deleteFromCart } = inject("cart");
+const cartStore = useCartStore();
+const { removeFromCart } = cartStore;
+const { cartItems } = storeToRefs(cartStore);
 </script>
 
 <template>
@@ -13,7 +16,7 @@ const { cartItems, deleteFromCart } = inject("cart");
               :image-url="cartItem.imageUrl"
               :id="cartItem.id"
               :title="cartItem.title"
-              @delete-from-cart="() => deleteFromCart(cartItem)"
+              @delete-from-cart="() => removeFromCart(cartItem)"
     />
   </div>
 </template>

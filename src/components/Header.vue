@@ -1,9 +1,11 @@
 <script setup>
+import {useCartStore} from "../stores/cart.store.js";
+import {storeToRefs} from "pinia";
+
 const emit = defineEmits(["openDrawer"]);
 
-defineProps({
-  totalPrice: Number,
-})
+const cartStore = useCartStore();
+const { totalPrice } = storeToRefs(cartStore);
 </script>
 
 <template>
@@ -37,7 +39,3 @@ defineProps({
     </ul>
   </header>
 </template>
-
-<!--<style scoped>-->
-<!--//todo write classes-->
-<!--</style>-->
