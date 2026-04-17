@@ -1,27 +1,23 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-import {useFiltersStore} from "./filters.store.js";
 
 export const useItemsStore = defineStore('items', () => {
     const items = ref([]);
     const isLoading = ref(false);
     const error = ref(null);
 
-    const filtersStore = useFiltersStore();
-
-    const fetchItems = async () => {
-        console.log(filtersStore.sortBy, filtersStore.searchQuery, 'AAAAAAA');
+    const fetchItems = async (filters) => {
         try {
             isLoading.value = true;
 
             const params = new URLSearchParams();
 
-            if (filtersStore.sortBy) {
-                params.append('sortBy', filtersStore.sortBy);
+            if (filters.sortBy) {
+                params.append('sortBy', filters.sortBy);
             }
 
-            if (filtersStore.searchQuery) {
-                params.append('title', `*${filtersStore.searchQuery}*`);
+            if (filters.searchQuery) {
+                params.append('title', `*${filters.searchQuery}*`);
             }
 
             const res = await fetch(
