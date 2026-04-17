@@ -25,6 +25,7 @@ const { totalPrice } = storeToRefs(cartStore);
         <img src="/cart.svg" alt="Cart">
         <b>{{totalPrice}} usd</b>
       </li>
+
       <router-link to="/saved">
         <li class="flex items-center gap-2 cursor-pointer text-gray-500 hover:text-black">
           <img src="/heart.svg" alt="Saved">
@@ -32,10 +33,12 @@ const { totalPrice } = storeToRefs(cartStore);
         </li>
       </router-link>
 
-      <li class="flex items-center gap-2 cursor-pointer text-gray-500 hover:text-black">
-        <img src="/profile.svg" alt="Profile">
-        <span>Profile</span>
-      </li>
+      <router-link to="/profile">
+        <li class="flex items-center gap-2 cursor-pointer text-gray-500 hover:text-black">
+          <img src="/profile.svg" alt="Profile">
+          <span>Profile</span>
+        </li>
+      </router-link>
     </ul>
   </header>
 </template>
