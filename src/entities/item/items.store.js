@@ -4,7 +4,6 @@ import { ref } from 'vue';
 export const useItemsStore = defineStore('items', () => {
     const items = ref([]);
     const isLoading = ref(false);
-    const error = ref(null);
 
     const fetchItems = async (filters) => {
         try {
@@ -26,7 +25,7 @@ export const useItemsStore = defineStore('items', () => {
 
             items.value = await res.json();
         } catch (e) {
-            error.value = e;
+            console.log(e);
         } finally {
             isLoading.value = false;
         }
@@ -35,7 +34,6 @@ export const useItemsStore = defineStore('items', () => {
     return {
         items,
         isLoading,
-        error,
         fetchItems
     };
 });

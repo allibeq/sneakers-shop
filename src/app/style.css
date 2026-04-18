@@ -1,0 +1,6 @@
+@import "../../node_modules/tailwindcss/dist/lib.d.mts";
+
+
+body {
+    background-color: rgb(247 254 231);
+}

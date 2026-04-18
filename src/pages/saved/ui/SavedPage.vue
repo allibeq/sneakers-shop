@@ -6,13 +6,13 @@
 
 <script setup>
 import {computed, onMounted} from "vue";
-import CardList from "../components/CardList.vue";
-import {useItemsStore} from "../stores/items.store.js";
+import CardList from "../../../widgets/product-list/CardList.vue";
+import {useItemsStore} from "../../../entities/item/items.store.js";
 import {storeToRefs} from "pinia";
-import {useFavoritesStore} from "../stores/favourite.store.js";
-import {useCartStore} from "../stores/cart.store.js";
-import PageHeader from "../components/PageHeader.vue";
-import {useFiltersLogic} from "../composables/useFiltersLogic.js";
+import {useFavoritesStore} from "../../../entities/favourite/favourite.store.js";
+import {useCartStore} from "../../../entities/cart/cart.store.js";
+import PageHeader from "../../../features/filters/PageHeader.vue";
+import {useFiltersLogic} from "../../../features/filters/useFiltersLogic.js";
 
 const cartStore = useCartStore();
 const { toggleCart } = cartStore;

@@ -26,7 +26,3 @@ defineProps({
   addToFavorite: Function,
 });
 </script>
-
-<!--<style scoped>-->
-<!--//todo write classes-->
-<!--</style>-->

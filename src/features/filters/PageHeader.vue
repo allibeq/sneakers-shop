@@ -21,5 +21,4 @@ const filters= defineModel();
       </div>
     </div>
   </div>
-
 </template>

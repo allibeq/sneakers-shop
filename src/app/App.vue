@@ -9,9 +9,9 @@
 </template>
 
 <script setup>
-import Header from "./components/Header.vue";
+import Header from "../widgets/header/Header.vue";
 import { ref } from "vue";
-import Drawer from "./components/Drawer.vue";
+import Drawer from "../widgets/drawer/Drawer.vue";
 
 const drawerOpen = ref(false);
 

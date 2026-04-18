@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import Card from "./Card.vue";
+import Card from "../../entities/item/Card.vue";
 
 defineProps({
   items: Array,

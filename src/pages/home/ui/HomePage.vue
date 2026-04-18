@@ -5,14 +5,14 @@
 </template>
 
 <script setup>
-import CardList from "../components/CardList.vue";
+import CardList from "../../../widgets/product-list/CardList.vue";
 import {computed, onMounted} from "vue";
-import PageHeader from "../components/PageHeader.vue";
-import {useItemsStore} from "../stores/items.store.js";
+import PageHeader from "../../../features/filters/PageHeader.vue";
+import {useItemsStore} from "../../../entities/item/items.store.js";
 import {storeToRefs} from "pinia";
-import {useFavoritesStore} from "../stores/favourite.store.js";
-import {useCartStore} from "../stores/cart.store.js";
-import {useFiltersLogic} from "../composables/useFiltersLogic.js";
+import {useFavoritesStore} from "../../../entities/favourite/favourite.store.js";
+import {useCartStore} from "../../../entities/cart/cart.store.js";
+import {useFiltersLogic} from "../../../features/filters/useFiltersLogic.js";
 
 const store = useItemsStore();
 const { items } = storeToRefs(store);

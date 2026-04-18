@@ -1,10 +1,10 @@
 <script setup>
 import DrawerHead from "./DrawerHead.vue";
-import CartList from "./CartList.vue";
-import InfoBlock from "./InfoBlock.vue";
+import CartList from "../../entities/cart/CartList.vue";
+import InfoBlock from "../../shared/InfoBlock.vue";
 import DrawerBottom from "./DrawerBottom.vue";
 import { ref } from "vue";
-import {useCartStore} from "../stores/cart.store.js";
+import {useCartStore} from "../../entities/cart/cart.store.js";
 import {storeToRefs} from "pinia";
 
 defineProps({
@@ -13,6 +13,7 @@ defineProps({
 
 const cartStore = useCartStore();
 const { cartItems, totalPrice } = storeToRefs(cartStore);
+const { removeFromCart } = cartStore;
 
 const isCreatingOrder = ref(false);
 
@@ -20,6 +21,7 @@ const createOrder = async () => {
   const obj = {
     items: cartItems.value,
     totalPrice: totalPrice.value,
+    date: Date.now()
   }
 
   try {
@@ -47,7 +49,7 @@ const createOrder = async () => {
     <DrawerHead @on-close="onClose"/>
     <InfoBlock v-if="!totalPrice" title="Cart is empty" description="Check out new sneakers" imageUrl="/package-icon.png"/>
 
-    <CartList v-if="totalPrice"/>
+    <CartList :items="cartItems" v-if="totalPrice" @remove="removeFromCart"/>
     <DrawerBottom @create-order="createOrder" v-if="totalPrice" :isCreatingOrder="isCreatingOrder"/>
   </div>
 </template>
