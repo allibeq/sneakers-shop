@@ -1,4 +1,3 @@
-
 <template>
   <div class="border-2 bg-white border-black-200 rounded-3xl p-8 cursor-pointer hover:-translate-y-2 transition hover:shadow-xl">
     <img :src="imgUrl" alt="Sneaker">

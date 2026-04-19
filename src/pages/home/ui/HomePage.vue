@@ -8,21 +8,24 @@
 import CardList from "../../../widgets/product-list/CardList.vue";
 import {computed, onMounted} from "vue";
 import PageHeader from "../../../features/filters/PageHeader.vue";
-import {useItemsStore} from "../../../entities/item/items.store.js";
+import {useItemsStore} from "@/entities/item/items.store.js";
 import {storeToRefs} from "pinia";
-import {useFavoritesStore} from "../../../entities/favourite/favourite.store.js";
-import {useCartStore} from "../../../entities/cart/cart.store.js";
-import {useFiltersLogic} from "../../../features/filters/useFiltersLogic.js";
+import {useFavoritesStore} from "@/entities/favourite/favourite.store.js";
+import {useCartStore} from "@/entities/cart/cart.store.js";
+import {useFiltersLogic} from "@/features/filters/useFiltersLogic.js";
+import {useFavorites} from "@/features/favourites/useFavourites.js";
+import {useItems} from "@/features/items/useItems.js";
+import {useCart} from "@/features/cart/useCart.js";
 
 const store = useItemsStore();
 const { items } = storeToRefs(store);
-const { fetchItems } = store;
+const { fetchItems } = useItems();
 
 const favStore = useFavoritesStore();
-const { fetchFavorites, toggleFavorite } = useFavoritesStore();
+const { fetchFavorites, toggleFavorite } = useFavorites();
 
 const cartStore = useCartStore();
-const { toggleCart } = cartStore;
+const { toggleCart } = useCart();
 
 const { filters } = useFiltersLogic(
     fetchItems

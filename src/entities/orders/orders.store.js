@@ -4,19 +4,19 @@ import {ref} from "vue";
 export const useOrdersStore = defineStore('orders', () => {
 
     const orders = ref([]);
+    const isCreatingOrder = ref(false);
 
-    const fetchOrders = async () => {
-        try {
-            const res = await fetch("https://4c91f87c72e0e424.mokky.dev/orders");
+    const setOrders = (data) => {
+        orders.value = data;
+    };
 
-            orders.value = await res.json();
-        } catch (e) {
-            console.error(e);
-        }
+    const setCreatingOrder = (data) => {
+        isCreatingOrder.value = data;
     };
 
     return {
         orders,
-        fetchOrders,
+        setOrders,
+        setCreatingOrder
     }
 })

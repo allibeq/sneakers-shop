@@ -3,9 +3,10 @@ import DrawerHead from "./DrawerHead.vue";
 import CartList from "../../entities/cart/CartList.vue";
 import InfoBlock from "../../shared/InfoBlock.vue";
 import DrawerBottom from "./DrawerBottom.vue";
-import { ref } from "vue";
-import {useCartStore} from "../../entities/cart/cart.store.js";
+import {useCartStore} from "@/entities/cart/cart.store.js";
 import {storeToRefs} from "pinia";
+import {useOrders} from "@/features/orders/useOrders.js";
+import {useOrdersStore} from "@/entities/orders/orders.store.js";
 
 defineProps({
   onClose: Function,
@@ -15,32 +16,8 @@ const cartStore = useCartStore();
 const { cartItems, totalPrice } = storeToRefs(cartStore);
 const { removeFromCart } = cartStore;
 
-const isCreatingOrder = ref(false);
-
-const createOrder = async () => {
-  const obj = {
-    items: cartItems.value,
-    totalPrice: totalPrice.value,
-    date: Date.now()
-  }
-
-  try {
-    isCreatingOrder.value = true;
-    const data = await fetch("https://4c91f87c72e0e424.mokky.dev/orders", {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(obj)}
-    )
-
-    cartItems.value = [];
-  } catch (e) {
-    console.log(e);
-  } finally {
-    isCreatingOrder.value = false;
-  }
-}
+const { isCreatingOrder } = useOrdersStore();
+const { createOrder } = useOrders(cartItems, totalPrice);
 </script>
 
 <template>

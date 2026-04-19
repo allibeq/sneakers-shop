@@ -1,5 +1,5 @@
 <script setup>
-import {useCartStore} from "../../entities/cart/cart.store.js";
+import {useCartStore} from "@/entities/cart/cart.store.js";
 import {storeToRefs} from "pinia";
 
 const emit = defineEmits(["openDrawer"]);

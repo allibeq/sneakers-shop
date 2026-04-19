@@ -1,6 +1,6 @@
 import debounce from 'lodash.debounce';
-import {reactive, watch} from "vue";
-import {useRoute, useRouter} from "vue-router";
+import { reactive, watch } from "vue";
+import { useRoute, useRouter } from "vue-router";
 
 export function useFiltersLogic(fetchItems) {
 

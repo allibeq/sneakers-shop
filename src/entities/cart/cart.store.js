@@ -14,22 +14,12 @@ export const useCartStore = defineStore('cart', () => {
 
     const addToCart = (item) => {
         if (!isAdded(item.id)) {
-            item.isAdded = true;
             cartItems.value.push(item);
         }
     };
 
     const removeFromCart = (item) => {
-        item.isAdded = false;
-        cartItems.value = cartItems.value.filter(i => i.id !== item.id);
-    };
-
-    const toggleCart = (item) => {
-        if (isAdded(item.id)) {
-            removeFromCart(item);
-        } else {
-            addToCart(item);
-        }
+        cartItems.value = cartItems.value.filter(cartItem => cartItem.id !== item.id);
     };
 
     return {
@@ -38,6 +28,5 @@ export const useCartStore = defineStore('cart', () => {
         isAdded,
         addToCart,
         removeFromCart,
-        toggleCart
     };
 });
